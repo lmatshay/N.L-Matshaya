@@ -3,47 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatshay <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vdruta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/12 16:52:36 by lmatshay          #+#    #+#             */
-/*   Updated: 2016/05/12 18:01:52 by lmatshay         ###   ########.fr       */
+/*   Created: 2015/10/24 19:51:47 by vdruta            #+#    #+#             */
+/*   Updated: 2015/11/02 14:43:15 by vdruta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *first;
-	char *second;
-	int i;
-	int size;
+	char	*dst;
+	int		i;
+	int		j;
 
+	dst = (char*)malloc(sizeof(*dst) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!dst)
+		return (NULL);
 	i = 0;
-	first = (char*)malloc(sizeof(*s1 + *s2));
-	first = (char*)s1;
-	size = ft_strlen(first);
-	second = (char*)s2;
-	while (first[size])
+	j = 0;
+	while (s1[j])
 	{
-		first[i] = first[i] + second[i];
-	   	i++;
+		dst[i] = s1[j];
+		j++;
+		i++;
 	}
-	first[i] = '\0';
-	return (first);	
+	j = 0;
+	while (s2[j])
+	{
+		dst[i] = s2[j];
+		j++;
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }
-
-int main()
-{
-	char *a;
-	char *b;
-	char *c;
-
-	a = "please";
-	b = "join";
-	c = ft_strjoin(a, b);
-	printf("%s", c);
-	return (0);
-}
-

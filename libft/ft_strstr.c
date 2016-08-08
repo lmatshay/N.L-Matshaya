@@ -3,54 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatshay <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vdruta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/12 08:11:24 by lmatshay          #+#    #+#             */
-/*   Updated: 2016/05/12 09:22:48 by lmatshay         ###   ########.fr       */
+/*   Created: 2015/10/21 14:59:42 by vdruta            #+#    #+#             */
+/*   Updated: 2015/11/09 14:46:08 by vdruta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include <string.h>
 
-char *ft_strstr(const char *big, const char *little)
+char	*ft_strstr(const char *s1, const char *s2)
 {
 	int i;
-	int	sl_big;
-	int sl_little;
-	char s_v1[50];
+	int j;
+	int len;
 
 	i = 0;
-	sl_big = ft_strlen(big);
-	sl_little = ft_strlen(little);
-	if (sl_little > 0)
+	j = 0;
+	len = 0;
+	while (s2[len])
+		len++;
+	if (len == 0)
+		return ((char*)s1);
+	while (s1[i])
 	{
-		while (little[i])
-		{
-			if (big[i] == little[i])
-			{
-				s_v1[i] = big[i];
-				i++;
-			}
-		}
-		s_v1[i] = '\0';
-		return (s_v1);
+		while (s2[j] && s2[j] == s1[i + j])
+			j++;
+		if (s2[j] == '\0')
+			return ((char *)(s1 + i));
+		j = 0;
+		i++;
 	}
-	else if (sl_little == 0)
-		return (big);
-	else
-		return (NULL);
-}
-
-
-}
-
-int	main()
-{
-	char a[] = "Im Luthando";
-	char b[] = "Luthando";
-	char c = *ft_strstr(a, b);
-
-	printf("%c", c);
-	return (0);
+	return (NULL);
 }
