@@ -1,0 +1,11 @@
+prefix=/goinfre/lmatshay/.brew/Cellar/assimp/4.0.1
+exec_prefix=/goinfre/lmatshay/.brew/Cellar/assimp/4.0.1/
+libdir=/goinfre/lmatshay/.brew/Cellar/assimp/4.0.1/lib
+includedir=/goinfre/lmatshay/.brew/Cellar/assimp/4.0.1/include/assimp
+
+Name: Assimp
+Description: Import various well-known 3D model formats in an uniform manner.
+Version: 4.0.1
+Libs: -L${libdir} -lassimp
+Libs.private:  -lz
+Cflags: -I${includedir}
